@@ -7,8 +7,10 @@ const port = 3000;
 require('dotenv').config();
 //Use environment variable
 const atlasUri = process.env.ATLAS_URI
-//Import Product
+//Import Product schema
 const Product = require('./models/Product');
+//Import routes
+const productRoutes = require('./routes/products');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -22,6 +24,9 @@ mongoose
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
+
+//Use product routes
+app.use('/products', productRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
