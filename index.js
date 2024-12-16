@@ -7,7 +7,8 @@ const port = 3000;
 require('dotenv').config();
 //Use environment variable
 const atlasUri = process.env.ATLAS_URI
-
+//Import Product
+const Product = require('./models/Product');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
