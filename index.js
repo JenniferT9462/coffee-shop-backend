@@ -8,7 +8,7 @@ require('dotenv').config();
 //Use environment variable
 const atlasUri = process.env.ATLAS_URI
 //Import Product schema
-const Product = require('./models/Product');
+// const Product = require('./models/Product');
 //Import routes
 const productRoutes = require('./routes/products');
 
