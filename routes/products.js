@@ -47,27 +47,33 @@ router.post('/', async (req, res) => {
 // GET a single product by ID
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    res.json({
-        message: "Single Product",
-        productId: id
-       
-    });
+    const product = await Product.findById(id);
+    res.json(product);
 });
 
 // PUT Update a product by ID
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
-    res.json({
-        message: `Updated ${id} Product Successful.`
-    });
+    const data = req.body;
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(
+            id, 
+            data, 
+            { new: true, runValidators: true });
+        if (!updatedProduct) {
+            return res.status(404).json({ error: 'Product not found.' });
+        }
+        res.json(updatedProduct);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
-
+    
 // DELETE a product by ID
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;
-    res.json({
-        message: `Deleted ${id} Product Successful.`
-    });
+    const deletedProduct = await Product.findByIdAndDelete(id)
+    res.json(deletedProduct);
 });
 
 module.exports = router;
