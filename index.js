@@ -11,7 +11,9 @@ const atlasUri = process.env.ATLAS_URI
 //Import routes
 const productRoutes = require('./routes/products');
 //Import user routes
-const authRoutes = require('./routes/auth')
+const authRoutes = require('./routes/auth');
+// Import auth middleware
+const auth = require('./middleware/auth')
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -27,7 +29,7 @@ mongoose
   });
 
 //Use product routes
-app.use('/products', productRoutes);
+app.use('/products', auth, productRoutes);
 //Use user routes
 app.use('/auth', authRoutes);
 
