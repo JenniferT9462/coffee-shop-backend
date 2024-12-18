@@ -28,7 +28,7 @@ mongoose
     console.error('Error connecting to MongoDB:', error);
   });
 
-//Use product routes
+//Use products routes
 app.use('/products', auth, productRoutes);
 //Use user routes
 app.use('/auth', authRoutes);
