@@ -10,6 +10,8 @@ const atlasUri = process.env.ATLAS_URI
 
 //Import routes
 const productRoutes = require('./routes/products');
+//Import user routes
+const authRoutes = require('./routes/auth')
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -26,6 +28,8 @@ mongoose
 
 //Use product routes
 app.use('/products', productRoutes);
+//Use user routes
+app.use('/auth', authRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
