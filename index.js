@@ -16,7 +16,8 @@ const authRoutes = require('./routes/auth');
 const auth = require('./middleware/auth');
 // Import user routes
 const userRoutes = require('./routes/users');
-
+//Import error middleware
+const errorHandler = require('./middleware/errorHandler');
 // Middleware to parse JSON bodies
 app.use(express.json());
 
@@ -30,12 +31,17 @@ mongoose
     console.error('Error connecting to MongoDB:', error);
   });
 
+// Use the error handling middleware
+app.use(errorHandler);
+  
 //Use products routes
 app.use('/products', auth, productRoutes);
 //Use auth routes
 app.use('/auth', authRoutes);
 // Use user routes
 app.use('/users', auth, userRoutes)
+
+
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
