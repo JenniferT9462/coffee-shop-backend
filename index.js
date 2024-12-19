@@ -13,7 +13,9 @@ const productRoutes = require('./routes/products');
 //Import user routes
 const authRoutes = require('./routes/auth');
 // Import auth middleware
-const auth = require('./middleware/auth')
+const auth = require('./middleware/auth');
+// Import user routes
+const userRoutes = require('./routes/users');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -30,8 +32,10 @@ mongoose
 
 //Use products routes
 app.use('/products', auth, productRoutes);
-//Use user routes
+//Use auth routes
 app.use('/auth', authRoutes);
+// Use user routes
+app.use('/users', userRoutes)
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
