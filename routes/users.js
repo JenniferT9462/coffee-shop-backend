@@ -55,9 +55,21 @@ router.put('/:id', async (req, res) => {
     // res.json({ message: `User: ${id} Updated.` })
 })
 // Delete a user by ID
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     const id = req.params.id;
-    res.json({ message: `User: ${id} deleted.`});
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ error: 'Access denied.' });
+      }
+      try {
+        const user = await User.findByIdAndDelete(id);
+        if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+        }
+        res.json({ message: 'User deleted successfully' });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    // res.json({ message: `User: ${id} deleted.`});
 })
 
 
