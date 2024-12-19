@@ -49,8 +49,15 @@ router.post('/', async (req, res) => {
 // GET a single product by ID
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    const product = await Product.findById(id);
-    res.json(product);
+    try {
+        const product = await Product.findById(id);
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // PUT Update a product by ID
