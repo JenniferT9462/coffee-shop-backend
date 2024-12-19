@@ -35,7 +35,7 @@ app.use('/products', auth, productRoutes);
 //Use auth routes
 app.use('/auth', authRoutes);
 // Use user routes
-app.use('/users', userRoutes)
+app.use('/users', auth, userRoutes)
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
