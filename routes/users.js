@@ -1,12 +1,21 @@
 const express = require('express');
 const router = express.Router();
-// const User = require('../models/User');
+const User = require('../models/User');
 // const auth = require('../middleware/auth');
 // const bcrypt = require('bcryptjs');
 
 // Get all users - admin only
-router.get('/', (req, res) => {
-    res.json({ message: "Hello Users"})
+router.get('/', async (req, res) => {
+    // res.json({ message: "Hello Users"})
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ error: 'Access denied.' });
+      }
+      try {
+        const users = await User.find();
+        res.json(users);
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
 });
 // Get a single user by ID
 router.get('/:id', (req, res) => {
