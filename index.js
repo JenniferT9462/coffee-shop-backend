@@ -41,8 +41,6 @@ app.use('/auth', authRoutes);
 // Use user routes
 app.use('/users', auth, userRoutes)
 
-
-
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
