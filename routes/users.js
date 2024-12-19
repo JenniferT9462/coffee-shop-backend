@@ -18,9 +18,18 @@ router.get('/', async (req, res) => {
       }
 });
 // Get a single user by ID
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    res.json({ message: `Hello User: ${id}`});
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+    // res.json({ message: `Hello User: ${id}`});
 })
 // Update a user by ID
 router.put('/:id', (req, res) => {
