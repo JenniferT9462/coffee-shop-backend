@@ -7,7 +7,8 @@ const port = 3000;
 require('dotenv').config();
 //Use environment variable
 const atlasUri = process.env.ATLAS_URI
-
+// Import path from express
+const path = require('path');
 //Import routes
 const productRoutes = require('./routes/products');
 //Import user routes
@@ -18,8 +19,12 @@ const auth = require('./middleware/auth');
 const userRoutes = require('./routes/users');
 //Import error middleware
 const errorHandler = require('./middleware/errorHandler');
+
+
 // Middleware to parse JSON bodies
 app.use(express.json());
+// Serve Static Files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB
 mongoose
