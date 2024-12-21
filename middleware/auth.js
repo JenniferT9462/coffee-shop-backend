@@ -25,8 +25,8 @@ const auth = ((req, res, next) => {
     // Verify the token
     const decodedToken = jwt.verify(token, secretKey);
     // Print the received token and decoded token for debugging purposes
-    console.log('Token received:', token);
-    console.log('Decoded Token:', decodedToken);
+    // console.log('Token received:', token);
+    // console.log('Decoded Token:', decodedToken);
     // Attach Decoded Information to the req Object
     req.user = {
         userId: decodedToken.name,
