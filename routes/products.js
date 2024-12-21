@@ -5,6 +5,8 @@ const router = Router();
 const Product = require("../models/Product");
 // Import upload middleware
 const upload = require("../middleware/upload");
+// Import role middleware
+const role = require('../middleware/role');
 
 //Get all products
 router.get("/", async (req, res) => {
@@ -33,7 +35,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST Create a new product
-router.post("/", upload, async (req, res) => {
+router.post("/", role('admin'), upload, async (req, res) => {
   try {
     //Extract the request body containing the product data
     const { name, description, price, category, stock } = req.body;
