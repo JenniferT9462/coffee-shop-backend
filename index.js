@@ -24,7 +24,8 @@ const errorHandler = require('./middleware/errorHandler');
 // Middleware to parse JSON bodies
 app.use(express.json());
 // Serve Static Files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static('/tmp/'));
 
 // Connect to MongoDB
 mongoose

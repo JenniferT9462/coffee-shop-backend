@@ -107,6 +107,7 @@
 ### Test the Deployed API
 - Get the URL of Your Deployed API:
     * Once the deployment is complete, get the URL from Render.com.
+    * URL for Deployed site: https://coffee-shop-backend-sm62.onrender.com
 - Test the Endpoints:
 
 
