@@ -108,7 +108,49 @@
 - Get the URL of Your Deployed API:
     * Once the deployment is complete, get the URL from Render.com.
     * URL for Deployed site: https://coffee-shop-backend-sm62.onrender.com
-- Test the Endpoints:
-
+#### Test the Endpoints:
+#### Available Routes:
+- Products:
+    | Method | Endpoint | Description |
+    | ------ | -------- | ----------- |
+    | POST | /products | Create a new Product |
+    | GET | /products | Get all products |
+    | GET | /products/:id | Get a product by ID |
+    | PUT | /products/:id | Update a product by ID |
+    | DELETE | /products/:id | Delete a product by ID |
+- Users:
+    | Method | Endpoint | Description |
+    | ------ | -------- | ----------- |
+    | POST | /users | Create a New User |
+    | POST | /users | Login a User |
+    | GET | /users | Get All Users |
+    | GET | /users/:id | Get a Single User by ID |
+    | PUT | /users/:id | Update a User by ID |
+    | DELETE | /users/:id | Delete a User by ID |
+- Screenshots:
+- Products:
+    * Get All Products:
+    ![get all products](</img/renderGetAllProducts.png>)
+    * Create a New Product:
+    ![create a new product](</img/renderPostNewProduct.png>)
+    * Get Single Product by Id - `/products/id`
+    ![get single product](</img/renderGetSingleProduct.png>)
+    * Update a Product by Id:
+    ![update a product](</img/renderUpdateProduct.png>)
+    * Delete a Product by Id:
+    ![delete a product](</img/renderDeleteProduct.png>)
+- Users:
+    * Create a New User:
+    ![create a new user](</img/renderRegisterUser.png>)
+    * Login a User:
+    ![login a user](</img/renderLoginUser.png>)
+    * Get All Users:
+    ![get all users](</img/renderGetAllUsers.png>)
+    * Get a Single User by Id:
+    ![get single user](</img/renderGetSingleUser.png>)
+    * Update a User by Id:
+    ![update a user](</img/renderUpdateUser.png>)
+    * Delete a User by Id:
+    ![delete a user](</img/renderDeleteUser.png>)
 
 
