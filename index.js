@@ -51,9 +51,14 @@ app.use('/auth', authRoutes);
 app.use('/users', userRoutes)
 
 const cors = require('cors');
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://coffee-shop-backend-sm62.onrender.com'],
-}));
+
+app.use(cors());
+
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'https://coffee-shop-backend-sm62.onrender.com'],
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
 
 
 app.listen(port, () => {
