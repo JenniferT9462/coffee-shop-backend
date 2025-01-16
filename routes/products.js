@@ -10,7 +10,7 @@ const upload = require("../middleware/upload");
 // Import validate middleware
 const { validateProduct } = require('../middleware/validate');
 
-app.use(cors());
+
 
 //Get all products
 router.get("/", async (req, res) => {
