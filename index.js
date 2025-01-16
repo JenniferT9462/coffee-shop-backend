@@ -47,6 +47,12 @@ app.use('/auth', authRoutes);
 // Use user routes
 app.use('/users', auth, userRoutes)
 
+const cors = require('cors');
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://coffee-shop-backend-sm62.onrender.com'],
+}));
+
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
