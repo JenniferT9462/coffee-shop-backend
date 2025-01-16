@@ -13,6 +13,8 @@ const atlasUri = process.env.ATLAS_URI
 
 app.use(cors());
 
+
+
 // Import path from express
 const path = require('path');
 //Import routes
