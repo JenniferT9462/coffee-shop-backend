@@ -1,14 +1,17 @@
+'use strict';
+
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
+const cors = require('cors');
 
 //Import dotenv
 require('dotenv').config();
 //Use environment variable
 const atlasUri = process.env.ATLAS_URI
 
-// console.log('MongoDB URI:', process.env.MONGO_URI);
+app.use(cors());
 
 // Import path from express
 const path = require('path');
@@ -50,15 +53,9 @@ app.use('/auth', authRoutes);
 // Use user routes
 app.use('/users', userRoutes)
 
-const cors = require('cors');
 
-app.use(cors());
 
-// app.use(cors({
-//   origin: ['http://localhost:3000', 'https://coffee-shop-backend-sm62.onrender.com'],
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-// }));
+
 
 
 app.listen(port, () => {
