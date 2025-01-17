@@ -1,3 +1,5 @@
+'use strict';
+
 const Router = require("express").Router;
 const router = Router();
 
@@ -39,11 +41,12 @@ router.get("/", async (req, res) => {
 });
 
 // POST Create a new product
-router.post("/", upload, validateProduct, async (req, res) => {
+router.post("/", upload.single('image'), validateProduct, async (req, res) => {
   try {
     //Extract the request body containing the product data
     const { name, description, price, category, stock } = req.body;
-    const imageUrl = req.file ? `/uploads/${req.file.filename}` : "";
+    // const imageUrl = req.file ? `/uploads/${req.file.filename}` : "";
+    const imageUrl = req.file ? req.file.path : undefined
     // Create a new Product instance w/provided data
     const product = new Product({
       name,
@@ -81,13 +84,14 @@ router.get("/:id", async (req, res) => {
 });
 
 // PUT Update a product by ID
-router.put("/:id", upload, async (req, res) => {
+router.put("/:id", upload.single('image'), async (req, res) => {
   try {
     const id = req.params.id;
     const { name, description, price, category, stock } = req.body;
-    const imageUrl = req.file
-      ? `/uploads/${req.file.filename}`
-      : req.body.imageUrl;
+    // const imageUrl = req.file
+    //   ? `/uploads/${req.file.filename}`
+    //   : req.body.imageUrl;
+    const imageUrl = req.file ? req.file.path : undefined
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
       { name, description, price, category, stock, imageUrl },
