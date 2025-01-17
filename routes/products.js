@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
   try {
     const {
       page = 1,
-      limit = 10,
+      limit = 20,
       category,
       sortBy,
       sortOrder = "asc",
