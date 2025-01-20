@@ -3,7 +3,8 @@
 const Cart = require('../models/Cart');
 
 async function getOrCreateCart(req, res, next) {
-    const userId = req.body.userId; // Fetch userId from request body
+    // const userId = req.body.userId; // Fetch userId from request body
+    const userId = req.userId
     if (!userId) {
       return res.status(400).json({ error: "userId is required" });
     }
