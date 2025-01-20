@@ -53,7 +53,11 @@ app.use('/products', productRoutes);
 //Use auth routes
 app.use('/auth', authRoutes);
 // Use user routes
-app.use('/users', userRoutes)
+app.use('/users', userRoutes);
+
+const cartRoutes = require('./routes/cart');
+app.use('/cart', cartRoutes);
+
 
 
 
