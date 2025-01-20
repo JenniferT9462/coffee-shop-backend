@@ -22,7 +22,7 @@ const productRoutes = require('./routes/products');
 //Import user routes
 const authRoutes = require('./routes/auth');
 // Import auth middleware
-// const auth = require('./middleware/auth');
+const auth = require('./middleware/auth');
 // Import user routes
 const userRoutes = require('./routes/users');
 //Import error middleware
@@ -56,7 +56,7 @@ app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 
 const cartRoutes = require('./routes/cart');
-app.use('/cart', cartRoutes);
+app.use('/cart', auth, cartRoutes);
 
 
 
