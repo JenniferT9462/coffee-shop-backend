@@ -56,7 +56,7 @@ app.use('/auth', authRoutes);
 // Use user routes
 app.use('/users', userRoutes);
 
-app.use('/cart', cartRoutes);
+// app.use('/cart', cartRoutes);
 
 
 
