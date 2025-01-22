@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
             { expiresIn: secretKeyExpires }
         );
         // Step 4: Send response with the token
-        res.status(200).json({ message: "Login successful", token })
+        res.status(200).json({ message: "Login successful", token, userId: user._id })
     } catch (error) {
         // Log the error for debugging
         console.error(error);
