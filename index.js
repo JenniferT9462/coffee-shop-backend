@@ -50,7 +50,7 @@ mongoose
 app.use(errorHandler);
   
 //Use products routes
-app.use('/products', productRoutes);
+app.use('/products', auth, productRoutes);
 //Use auth routes
 app.use('/auth', authRoutes);
 // Use user routes
