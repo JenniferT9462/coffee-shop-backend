@@ -1,5 +1,6 @@
 'use strict';
-
+// Import auth middleware
+const auth = require('./middleware/auth');
 const Router = require("express").Router;
 const router = Router();
 
@@ -19,7 +20,7 @@ router.get("/", async (req, res) => {
   try {
     const {
       page = 1,
-      limit = 20,
+      limit = 50,
       category,
       sortBy,
       sortOrder = "asc",
@@ -41,7 +42,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST Create a new product
-router.post("/", upload.single('image'), validateProduct, async (req, res) => {
+router.post("/", auth, upload.single('image'), validateProduct, async (req, res) => {
   try {
     //Extract the request body containing the product data
     const { name, description, price, category, stock } = req.body;
@@ -84,7 +85,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // PUT Update a product by ID
-router.put("/:id", upload.single('image'), async (req, res) => {
+router.put("/:id", auth, upload.single('image'), async (req, res) => {
   try {
     const id = req.params.id;
     const { name, description, price, category, stock } = req.body;
@@ -107,7 +108,7 @@ router.put("/:id", upload.single('image'), async (req, res) => {
 });
 
 // DELETE a product by ID
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   const id = req.params.id;
   try {
     const deletedProduct = await Product.findByIdAndDelete(id);
