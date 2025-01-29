@@ -57,8 +57,15 @@ router.post('/login', async (req, res) => {
             // Token expiration
             { expiresIn: secretKeyExpires }
         );
+        // User without password
+        const userData = {
+            userId: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+        }
         // Step 4: Send response with the token
-        res.status(200).json({ message: "Login successful", token, userId: user._id })
+        res.status(200).json({ message: "Login successful", token, userData })
     } catch (error) {
         // Log the error for debugging
         console.error(error);
