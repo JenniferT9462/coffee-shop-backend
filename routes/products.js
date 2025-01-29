@@ -1,6 +1,6 @@
 'use strict';
 // Import auth middleware
-const auth = require('./middleware/auth');
+const auth = require('../middleware/auth');
 const Router = require("express").Router;
 const router = Router();
 
