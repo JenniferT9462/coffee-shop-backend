@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
             userId: user._id,
             name: user.name,
             email: user.email,
-            password: user.password,
+            // password: user.password,
             role: user.role,
         }
         // Step 4: Send response with the token
