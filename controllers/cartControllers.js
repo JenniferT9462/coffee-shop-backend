@@ -14,6 +14,7 @@ async function getOrCreateCart(req, res, next) {
         user: userId // associate the cart with the user
       });
       await cart.save();
+      cart = await Cart.findById(cart._id).populate("products"); 
     }
     req.cart = cart;
     res.status(200).json(cart);

@@ -17,6 +17,7 @@ routerUnprotected.use(role(['user', 'admin']));
 
 for (let route of [routerProtected, routerUnprotected]) {
   // router.get('/', getCarts);
+  route.get('/', getOrCreateCart); 
   route.post('/', getOrCreateCart);
   route.put('/:id', addProductToCart);
   route.delete('/:id', removeProductFromCart);
