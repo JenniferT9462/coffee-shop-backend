@@ -1,5 +1,5 @@
 // Cart Controllers
-
+'use strict'
 const Cart = require('../models/Cart');
 
 async function getOrCreateCart(req, res, next) {
