@@ -68,12 +68,9 @@ const auth = (req, res, next) => {
 
         // Verify the token
         const decodedToken = jwt.verify(token, secretKey);
-        req.user = {
-            userId: decodedToken.name,
-            email: decodedToken.email,
-            role: decodedToken.role,
-        };
-
+        console.log("Decoded User:", decodedToken); // Debugging
+        req.user = decodedToken;
+        
         next(); // Continue to the next middleware or route handler
     } catch (error) {
         console.error("Auth middleware error:", error.message);

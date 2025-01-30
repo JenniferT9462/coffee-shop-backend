@@ -27,7 +27,7 @@ const auth = require('./middleware/auth');
 const userRoutes = require('./routes/users');
 //Import error middleware
 const errorHandler = require('./middleware/errorHandler');
-// const cartRoutes = require('./routes/cart');
+const cartRoutes = require('./routes/cart');
 
 
 // Middleware to parse JSON bodies
@@ -56,7 +56,7 @@ app.use('/auth', authRoutes);
 // Use user routes
 app.use('/users', userRoutes);
 
-// app.use('/cart', cartRoutes);
+app.use('/cart', cartRoutes);
 
 
 
