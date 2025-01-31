@@ -11,6 +11,7 @@ const router = express.Router();
 router.get("/", auth, async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.user.userId }).populate("products.productId");
+    console.log("Fetched Cart:", cart); // Debugging
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
     }
@@ -22,6 +23,7 @@ router.get("/", auth, async (req, res) => {
 
 // POST item to cart
 router.post("/", auth, async (req, res) => {
+  console.log("Authenticated User:", req.user); // Debugging user object
   try {
     console.log("Request received:", req.body); // Debugging
     console.log("User ID:", req.user.userId); // Debugging user ID
@@ -59,6 +61,7 @@ router.post("/", auth, async (req, res) => {
       });
     }
 
+    console.log("Cart before save:", cart);
     await cart.save();
     res.status(200).json(cart);
   } catch (error) {
