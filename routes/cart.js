@@ -92,6 +92,7 @@ router.put("/:productId", auth, async (req, res) => {
 // DELETE Item form Cart
 router.delete("/:productId", auth, async (req, res) => {
   try {
+    console.log("Product ID to remove:", req.params.productId); 
     const cart = await Cart.findOne({ userId: req.user.userId });
 
     if (!cart) return res.status(404).json({ message: "Cart not found" });
