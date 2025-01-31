@@ -30,7 +30,7 @@ router.post("/", auth, async (req, res) => {
       return res.status(401).json({ message: "Unauthorized - No User ID Found" });
     }
 
-    const { productId, quantity } = req.body;
+    const { productId, quantity = 1 } = req.body;
 
     // if (!productId || !name || !price) {
     //   return res.status(400).json({ message: "Missing required fields" });
