@@ -101,7 +101,7 @@ router.put("/:id", auth, upload.single('image'), async (req, res) => {
     if (!updatedProduct) {
       return res.status(404).json({ error: "Product not found." });
     }
-    res.json(updatedProduct);
+    res.json({ message: "Product updated successfully", product: updatedProduct }); 
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
