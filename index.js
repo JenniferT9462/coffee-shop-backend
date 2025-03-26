@@ -13,6 +13,11 @@ const atlasUri = process.env.ATLAS_URI
 
 app.use(cors());
 
+// Import your routes
+const helloRoute = require('./routes/helloRoute');
+
+// Use the routes
+app.use(helloRoute);
 
 
 // Import path from express
@@ -32,6 +37,12 @@ const cartRoutes = require('./routes/cart');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+
+// // /hello route to warm up the backend
+// app.get("/hello", (req, res) => {
+//   res.status(200).json({ message: "Backend is running!" });
+// });
 // Serve Static Files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // app.use('/uploads', express.static('/tmp/'));
